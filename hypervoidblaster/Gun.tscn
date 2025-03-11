@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://fds52ivlybhu"]
+
+[ext_resource type="Script" path="res://gun.gd" id="1_8fhg6"]
+[ext_resource type="Texture2D" uid="uid://bjtm73lre1ruq" path="res://55_Vocaliber.png" id="1_agj5w"]
+[ext_resource type="PackedScene" uid="uid://b8pmj26asgows" path="res://Bullet.tscn" id="2_dahmc"]
+[ext_resource type="Texture2D" uid="uid://blinccrleoy1q" path="res://4_2.png" id="4_qqu3w"]
+[ext_resource type="Texture2D" uid="uid://2a2snpkgu7bc" path="res://7.png" id="5_lwelq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7lvv"]
+atlas = ExtResource("4_qqu3w")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcvcr"]
+atlas = ExtResource("4_qqu3w")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_107nr"]
+atlas = ExtResource("4_qqu3w")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbl57"]
+atlas = ExtResource("4_qqu3w")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6kyb"]
+atlas = ExtResource("5_lwelq")
+region = Rect2(0, 0, 512, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_baufq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7lvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcvcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_107nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbl57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6kyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_r8do1"]
+resource_name = "Flare"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 0, 1, 2, 4]
+}
+
+[sub_resource type="Animation" id="Animation_h5amj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k715q"]
+_data = {
+"Flare": SubResource("Animation_r8do1"),
+"RESET": SubResource("Animation_h5amj")
+}
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_8fhg6")
+bullet_scene = ExtResource("2_dahmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("1_agj5w")
+
+[node name="Nozzle" type="Marker2D" parent="."]
+position = Vector2(24, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 2)
+scale = Vector2(2.0625, 1.79861)
+sprite_frames = SubResource("SpriteFrames_baufq")
+frame = 4
+
+[node name="Flare" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k715q")
+}

@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3777me5ncf03"]
+
+[ext_resource type="PackedScene" uid="uid://buswh5i0q7rxl" path="res://player.tscn" id="1_pdoqw"]
+[ext_resource type="Texture2D" uid="uid://dph5kml7qoqmi" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_8.png" id="1_vcyj0"]
+[ext_resource type="Texture2D" uid="uid://nggxds12xkn7" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_7.png" id="2_b7uth"]
+[ext_resource type="Texture2D" uid="uid://c6h4f60sdcjax" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_6.png" id="3_jsn28"]
+[ext_resource type="Texture2D" uid="uid://dcsxug62isfyy" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_5.png" id="4_3e6nh"]
+[ext_resource type="Texture2D" uid="uid://8phsjslsdspe" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_4.png" id="5_8vgs1"]
+[ext_resource type="Texture2D" uid="uid://eyt2vqv7nnjd" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_3.png" id="6_tmb38"]
+[ext_resource type="Texture2D" uid="uid://bd3i1p322360t" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_2.png" id="7_iu4ws"]
+[ext_resource type="Texture2D" uid="uid://cqlj0rlknnnol" path="res://Starry_Night_Itch_Package/Layers_1920x1080/Starry_night_Layer_1.png" id="9_insvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j45d8"]
+size = Vector2(1919, 134)
+
+[node name="Arena" type="Node2D"]
+
+[node name="StarryNightLayer8" type="Sprite2D" parent="."]
+position = Vector2(961, 538)
+texture = ExtResource("1_vcyj0")
+
+[node name="StarryNightLayer7" type="Sprite2D" parent="."]
+position = Vector2(958, 546)
+texture = ExtResource("2_b7uth")
+
+[node name="StarryNightLayer6" type="Sprite2D" parent="."]
+position = Vector2(958, 521)
+texture = ExtResource("3_jsn28")
+
+[node name="StarryNightLayer5" type="Sprite2D" parent="."]
+position = Vector2(958, 518)
+texture = ExtResource("4_3e6nh")
+
+[node name="StarryNightLayer4" type="Sprite2D" parent="."]
+position = Vector2(958, 546)
+texture = ExtResource("5_8vgs1")
+
+[node name="StarryNightLayer3" type="Sprite2D" parent="."]
+position = Vector2(961, 529)
+texture = ExtResource("6_tmb38")
+
+[node name="StarryNightLayer2" type="Sprite2D" parent="."]
+position = Vector2(975, 512)
+texture = ExtResource("7_iu4ws")
+
+[node name="player" parent="." instance=ExtResource("1_pdoqw")]
+position = Vector2(1452, 276)
+
+[node name="StarryNightLayer1" type="Sprite2D" parent="."]
+position = Vector2(919, 529)
+texture = ExtResource("9_insvk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(971, 1004)
+shape = SubResource("RectangleShape2D_j45d8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(962, -72)
+shape = SubResource("RectangleShape2D_j45d8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-60, 106)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_j45d8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1993, 133)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_j45d8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(967, 540)
