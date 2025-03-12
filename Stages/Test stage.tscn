@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://de0cl7yk87a8v"]
+
+[ext_resource type="Texture2D" uid="uid://dtseyb03247nc" path="res://Stages/Smashville/1.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://ctpeqlf7qilou" path="res://Characters/Fox/Fox.tscn" id="2_mvbcq"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(962, 38)
+
+[node name="Test Stage" type="Node2D"]
+
+[node name="FOX" parent="." instance=ExtResource("2_mvbcq")]
+position = Vector2(0, 177)
+
+[node name="Template" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(960, 769)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1, 1)
+shape = SubResource("1")
+
+[node name="Label" type="Label" parent="Floor"]
+offset_left = -16.0
+offset_top = 4.0
+offset_right = 24.0
+offset_bottom = 18.0
+text = "floor"
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(960, 839)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+polygon = PackedVector2Array(-481, -50, -427, 5, -339, 47, 340, 46, 424, 7, 483, -50)
+
+[node name="Label" type="Label" parent="Wall"]
+offset_left = -16.0
+offset_top = 12.0
+offset_right = 24.0
+offset_bottom = 26.0
+text = "wall"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 179)
+zoom = Vector2(0.84, 0.865)
+limit_left = -1140
+limit_top = -710
+limit_right = 1150
+limit_bottom = 550
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.0
+drag_right_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
